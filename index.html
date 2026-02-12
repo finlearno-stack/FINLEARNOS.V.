@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="hi-IN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FINLEARN - Smart tareeke se paisa banana seekho. Stock market, SIP, mutual funds simple Hinglish me.">
+    <meta name="keywords" content="finlearn, stock market, sip, mutual funds, finance education, hinglish">
+    <meta name="author" content="FINLEARN">
+    <meta name="theme-color" content="#6366f1">
+    <meta property="og:title" content="FINLEARN - Smart Paisa Sikho">
+    <meta property="og:description" content="Stock market, SIP, mutual funds simple Hinglish me seekho">
+    <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ">
+    <title>FINLEARN - Smart Paisa Sikho | #1 Hinglish Finance Platform</title>
+    
+    <!-- Favicon - Your Logo -->
+    <link rel="icon" type="image/png" href="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ">
+    <link rel="apple-touch-icon" href="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ========== INTRO SPLASH SCREEN ========== -->
+    <div class="intro-screen" id="introScreen">
+        <div class="intro-content">
+            <!-- Logo Container with Your Logo -->
+            <div class="intro-logo">
+                <div class="intro-logo-circle">
+                    <img src="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ" alt="FINLEARN Logo" class="logo-img">
+                </div>
+                <div class="intro-logo-rings">
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                </div>
+                <!-- Animated Graph Lines -->
+                <svg class="intro-graph" viewBox="0 0 200 100">
+                    <polyline class="graph-line line-1" points="0,80 30,70 60,75 90,50 120,55 150,30 180,40 200,20"/>
+                    <polyline class="graph-line line-2" points="0,90 30,85 60,80 90,70 120,65 150,50 180,55 200,35"/>
+                </svg>
+            </div>
+            <h1 class="intro-title">
+                <span class="letter">F</span><span class="letter">I</span><span class="letter">N</span><span class="letter">L</span><span class="letter">E</span><span class="letter">A</span><span class="letter">R</span><span class="letter">N</span>
+            </h1>
+            <p class="intro-tagline">Smart Paisa, Smart Future 📈</p>
+            <div class="intro-stats">
+                <div class="intro-stat"><span>12,500+</span><small>Learners</small></div>
+                <div class="intro-stat"><span>4.9⭐</span><small>Rating</small></div>
+                <div class="intro-stat"><span>50+</span><small>Videos</small></div>
+            </div>
+            <div class="intro-loader">
+                <div class="loader-bar"></div>
+            </div>
+            <p class="intro-loading-text">Loading your financial journey...</p>
+        </div>
+        <div class="intro-particles" id="particles"></div>
+        
+        <!-- Background Graphs -->
+        <div class="intro-bg-graphs">
+            <svg class="bg-graph bg-graph-1" viewBox="0 0 400 100"><polyline points="0,50 50,45 100,55 150,40 200,50 250,35 300,45 350,30 400,40"/></svg>
+            <svg class="bg-graph bg-graph-2" viewBox="0 0 400 100"><polyline points="0,60 50,55 100,65 150,50 200,60 250,45 300,55 350,40 400,50"/></svg>
+            <svg class="bg-graph bg-graph-3" viewBox="0 0 400 100"><polyline points="0,70 50,65 100,75 150,60 200,70 250,55 300,65 350,50 400,60"/></svg>
+        </div>
+    </div>
+
+    <!-- ========== MAIN WEBSITE ========== -->
+    <div class="main-website" id="mainWebsite">
+        <!-- Scroll Progress -->
+        <div class="scroll-progress" id="scrollProgress"></div>
+
+        <!-- Live Toast -->
+        <div class="live-toast" id="liveToast">
+            <div class="toast-avatar" id="toastAvatar">RK</div>
+            <div class="toast-content">
+                <div class="toast-title" id="toastTitle">Rahul ne Pro Premium liya!</div>
+                <div class="toast-time" id="toastTime">2 min pehle • Mumbai</div>
+            </div>
+            <button class="toast-close" onclick="hideToast()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- Live Counter Bar -->
+        <div class="live-bar">
+            <span><span class="live-dot"></span> <span id="liveUsers">847</span> users online</span>
+            <span class="ticker">
+                <i class="fas fa-chart-line"></i> NIFTY: <span class="green" id="tickerNifty">22,456.80 (+0.45%)</span>
+                <span class="ticker-separator">|</span>
+                SENSEX: <span class="green" id="tickerSensex">73,852 (+0.39%)</span>
+            </span>
+            <span>🔥 <span id="todayJoins">156</span> joins today</span>
+        </div>
+
+        <!-- Header with Your Logo -->
+        <header class="header">
+            <nav class="nav">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <div class="logo-icon">
+                        <img src="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ" alt="FINLEARN" class="header-logo-img">
+                    </div>
+                    <span class="logo-text">FINLEARN</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#" class="nav-link active" data-page="home" onclick="showPage('home')">Home</a>
+                    <a href="#" class="nav-link" data-page="premium" onclick="showPage('premium')">Premium</a>
+                    <a href="#" class="nav-link" data-page="sip" onclick="showPage('sip')">SIP Calculator</a>
+                    <a href="#" class="nav-link" data-page="learn" onclick="showPage('learn')">Learn</a>
+                    <a href="#" class="nav-link" data-page="market" onclick="showPage('market')">Live Market</a>
+                    <a href="#" class="nav-link" data-page="reviews" onclick="showPage('reviews')">Reviews</a>
+                    <a href="#" class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</a>
+                    <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="nav-cta"><i class="fas fa-crown"></i> Pro ₹199</a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+            </nav>
+        </header>
+
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav">
+            <a href="#" class="mob-nav-item active" data-page="home" onclick="showPage('home')"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="#" class="mob-nav-item" data-page="learn" onclick="showPage('learn')"><i class="fas fa-book"></i><span>Learn</span></a>
+            <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="mob-nav-item premium"><i class="fas fa-crown"></i><span>Pro</span></a>
+            <a href="#" class="mob-nav-item" data-page="market" onclick="showPage('market')"><i class="fas fa-chart-line"></i><span>Market</span></a>
+            <a href="#" class="mob-nav-item" data-page="contact" onclick="showPage('contact')"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        </nav>
+
+        <!-- FAB Telegram -->
+        <a href="https://t.me/Salonirana5252" target="_blank" class="fab"><i class="fab fa-telegram-plane"></i></a>
+
+        <!-- ========== HOME PAGE ========== -->
+        <main class="page active" id="page-home">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-bg"></div>
+                <div class="hero-graph-bg">
+                    <svg viewBox="0 0 1200 300" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="heroGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.4"/>
+                                <stop offset="100%" style="stop-color:#10b981;stop-opacity:0"/>
+                            </linearGradient>
+                        </defs>
+                        <path class="hero-wave" d="M0,200 Q150,150 300,180 T600,120 T900,160 T1200,100 L1200,300 L0,300 Z" fill="url(#heroGrad)"/>
+                        <polyline class="hero-line" points="0,200 150,150 300,180 450,130 600,120 750,150 900,160 1050,110 1200,100"/>
+                    </svg>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-badge"><i class="fas fa-fire"></i> #1 Hinglish Finance Platform</div>
+                    <h1>Smart tareeke se <span>paisa banana</span> seekho – FINLEARN ke saath</h1>
+                    <p>Stock market, SIP, mutual funds aur earning ideas – sab kuch simple Hinglish me! No confusing jargon, seedhi baat!</p>
+                    <div class="hero-btns">
+                        <a href="https://rzp.io/rzp/VnZo0OW" target="_blank" class="btn btn-outline"><i class="fas fa-rocket"></i> Basic ₹49/mo</a>
+                        <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary"><i class="fas fa-crown"></i> Pro ₹199/mo</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat"><span id="totalUsers">12,500+</span><small>Learners</small></div>
+                        <div class="stat"><span>4.9⭐</span><small>Rating</small></div>
+                        <div class="stat"><span>50+</span><small>Videos</small></div>
+                    </div>
+                    <div class="hero-trust">
+                        <span><i class="fas fa-check-circle"></i> Trusted by 12,500+ Indians</span>
+                        <span><i class="fas fa-lock"></i> Secure Payments</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Live Market Widget -->
+            <section class="market-widget">
+                <div class="market-header">
+                    <h3><i class="fas fa-chart-line"></i> Live Market Updates</h3>
+                    <span class="live-indicator"><span class="pulse"></span> LIVE</span>
+                </div>
+                <div class="market-cards">
+                    <div class="market-card">
+                        <div class="market-info">
+                            <div class="market-name">NIFTY 50</div>
+                            <div class="market-price" id="niftyPrice">22,456.80</div>
+                            <div class="market-change green" id="niftyChange">+102.35 (+0.45%)</div>
+                        </div>
+                        <div class="mini-chart"><canvas id="niftyChart"></canvas></div>
+                    </div>
+                    <div class="market-card">
+                        <div class="market-info">
+                            <div class="market-name">SENSEX</div>
+                            <div class="market-price" id="sensexPrice">73,852.45</div>
+                            <div class="market-change green" id="sensexChange">+285.60 (+0.39%)</div>
+                        </div>
+                        <div class="mini-chart"><canvas id="sensexChart"></canvas></div>
+                    </div>
+                    <div class="market-card">
+                        <div class="market-info">
+                            <div class="market-name">BANK NIFTY</div>
+                            <div class="market-price" id="bankPrice">48,234.55</div>
+                            <div class="market-change red" id="bankChange">-156.20 (-0.32%)</div>
+                        </div>
+                        <div class="mini-chart"><canvas id="bankChart"></canvas></div>
+                    </div>
+                </div>
+                <a href="#" onclick="showPage('market')" class="market-link">View Full Market Data <i class="fas fa-arrow-right"></i></a>
+            </section>
+
+            <!-- SIP Growth Chart -->
+            <section class="section chart-section">
+                <div class="section-header">
+                    <span class="badge green">📊 Growth Potential</span>
+                    <h2>SIP Growth Visualization</h2>
+                    <p>Dekho ₹5000 monthly SIP kaise grow karta hai over time</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item"><span class="dot blue"></span> Invested Amount</div>
+                    <div class="legend-item"><span class="dot green"></span> Total Value (12% returns)</div>
+                </div>
+                <div class="chart-insight">
+                    <i class="fas fa-lightbulb"></i>
+                    <p><strong>₹5000/month</strong> SIP, <strong>20 saal</strong> me ban sakta hai <strong>₹50 Lakh+</strong>! Start early, grow wealthy! 🚀</p>
+                </div>
+            </section>
+
+            <!-- Portfolio Allocation -->
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge purple">🎯 Smart Portfolio</span>
+                    <h2>Ideal Portfolio Allocation</h2>
+                    <p>Beginners ke liye recommended diversification strategy</p>
+                </div>
+                <div class="portfolio-section">
+                    <div class="pie-chart-container">
+                        <canvas id="portfolioChart"></canvas>
+                        <div class="pie-center">
+                            <span>Balanced</span>
+                            <small>Portfolio</small>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <div class="portfolio-item"><span class="color-dot" style="background:#6366f1"></span><span class="name">Large Cap Funds</span><span class="percent">40%</span><span class="risk low">Low Risk</span></div>
+                        <div class="portfolio-item"><span class="color-dot" style="background:#10b981"></span><span class="name">Mid Cap Funds</span><span class="percent">25%</span><span class="risk medium">Medium</span></div>
+                        <div class="portfolio-item"><span class="color-dot" style="background:#8b5cf6"></span><span class="name">Small Cap Funds</span><span class="percent">15%</span><span class="risk high">High Risk</span></div>
+                        <div class="portfolio-item"><span class="color-dot" style="background:#f59e0b"></span><span class="name">Debt Funds</span><span class="percent">15%</span><span class="risk low">Low Risk</span></div>
+                        <div class="portfolio-item"><span class="color-dot" style="background:#ef4444"></span><span class="name">Gold/Others</span><span class="percent">5%</span><span class="risk low">Hedge</span></div>
+                    </div>
+                </div>
+                <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary center-btn"><i class="fas fa-crown"></i> Pro me Portfolio Strategies Seekho</a>
+            </section>
+
+            <!-- Comparison Chart -->
+            <section class="section dark-section">
+                <div class="section-header light">
+                    <span class="badge">💰 Returns Comparison</span>
+                    <h2>FD vs SIP vs Stocks - 10 Year Returns</h2>
+                    <p>₹10,000 monthly investment ka comparison</p>
+                </div>
+                <div class="chart-container light-bg">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+                <div class="comparison-insight">
+                    <div class="insight-card">
+                        <div class="insight-icon fd"><i class="fas fa-university"></i></div>
+                        <h4>FD (6%)</h4>
+                        <p class="amount">₹16.4 Lakh</p>
+                        <span class="tag">Safe but Low</span>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon debt"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <h4>Debt Fund (8%)</h4>
+                        <p class="amount">₹18.3 Lakh</p>
+                        <span class="tag">Moderate</span>
+                    </div>
+                    <div class="insight-card highlight">
+                        <div class="insight-icon sip"><i class="fas fa-chart-line"></i></div>
+                        <h4>SIP Equity (12%)</h4>
+                        <p class="amount">₹23.2 Lakh</p>
+                        <span class="tag best">Best for Long Term</span>
+                    </div>
+                    <div class="insight-card">
+                        <div class="insight-icon stocks"><i class="fas fa-coins"></i></div>
+                        <h4>Direct Stocks (15%)</h4>
+                        <p class="amount">₹27.8 Lakh</p>
+                        <span class="tag">High Risk High Return</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                <div class="promo-content">
+                    <div class="promo-timer">
+                        <div class="timer-box"><span id="hours">05</span><small>Hours</small></div>
+                        <div class="timer-box"><span id="minutes">42</span><small>Mins</small></div>
+                        <div class="timer-box"><span id="seconds">18</span><small>Secs</small></div>
+                    </div>
+                    <h3>🎉 Limited Time Offer!</h3>
+                    <p>Pro Premium sirf <strong>₹199/month</strong> – Normally ₹499! 60% OFF!</p>
+                    <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-white"><i class="fas fa-bolt"></i> Claim Now</a>
+                    <div class="promo-features">
+                        <span><i class="fas fa-check"></i> 50+ Videos</span>
+                        <span><i class="fas fa-check"></i> Live Q&A</span>
+                        <span><i class="fas fa-check"></i> VIP Support</span>
+                    </div>
+                </div>
+                <div class="promo-bg-pattern"></div>
+            </div>
+
+            <!-- Benefits Section -->
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge">✨ Why FINLEARN?</span>
+                    <h2>FINLEARN Kyun Choose Karein?</h2>
+                    <p>India ka sabse trusted Hinglish finance education platform</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon blue"><i class="fas fa-language"></i></div>
+                        <div>
+                            <h4>100% Hinglish Content</h4>
+                            <p>Simple language me har concept samjho. No confusing English jargon!</p>
+                        </div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon green"><i class="fas fa-user-graduate"></i></div>
+                        <div>
+                            <h4>Beginner Friendly</h4>
+                            <p>Zero se hero tak, step by step guidance. Koi prior knowledge zaruri nahi!</p>
+                        </div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon purple"><i class="fas fa-chart-pie"></i></div>
+                        <div>
+                            <h4>Visual Learning</h4>
+                            <p>Charts, graphs aur animations se samjho. Boring text nahi, visual content!</p>
+                        </div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon orange"><i class="fas fa-rupee-sign"></i></div>
+                        <div>
+                            <h4>Super Affordable</h4>
+                            <p>Sirf ₹49/month se start karo! Ek coffee ki keemat me financial education!</p>
+                        </div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon red"><i class="fas fa-users"></i></div>
+                        <div>
+                            <h4>Active Community</h4>
+                            <p>5000+ members ka Telegram group. Doubts solve karo, network banao!</p>
+                        </div>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon teal"><i class="fas fa-mobile-alt"></i></div>
+                        <div>
+                            <h4>Learn Anywhere</h4>
+                            <p>Mobile pe bhi asani se seekho. Commute me, lunch break me, kahi bhi!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
+                        <div class="stat-number" data-count="12500">12,500+</div>
+                        <div class="stat-label">Happy Learners</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-star"></i></div>
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">User Rating</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-video"></i></div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Video Guides</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust Section -->
+            <section class="trust-section">
+                <h3>Trusted By Learners Across India</h3>
+                <div class="trust-badges">
+                    <div class="trust-badge"><i class="fas fa-shield-alt"></i><span>Razorpay Secure</span></div>
+                    <div class="trust-badge"><i class="fas fa-headset"></i><span>24/7 Support</span></div>
+                    <div class="trust-badge"><i class="fas fa-undo"></i><span>7-Day Refund</span></div>
+                    <div class="trust-badge"><i class="fas fa-certificate"></i><span>Quality Content</span></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== LIVE MARKET PAGE ========== -->
+        <main class="page" id="page-market">
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge green">📊 Live Market</span>
+                    <h2>Real-Time Market Data</h2>
+                    <p>Dekho Indian market kaise move kar raha hai - Updated every 3 seconds</p>
+                </div>
+
+                <!-- Main Chart -->
+                <div class="main-chart-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-area"></i> NIFTY 50 - Intraday Chart</h3>
+                        <div class="chart-tabs">
+                            <button class="chart-tab active" onclick="changeChartPeriod('1D')">1D</button>
+                            <button class="chart-tab" onclick="changeChartPeriod('1W')">1W</button>
+                            <button class="chart-tab" onclick="changeChartPeriod('1M')">1M</button>
+                            <button class="chart-tab" onclick="changeChartPeriod('1Y')">1Y</button>
+                        </div>
+                        <span class="live-badge"><span class="pulse"></span> LIVE</span>
+                    </div>
+                    <div class="big-chart">
+                        <canvas id="mainMarketChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Market Overview -->
+                <div class="market-overview">
+                    <h3>📈 Market Overview</h3>
+                    <div class="market-grid">
+                        <div class="market-item"><span class="name">NIFTY 50</span><span class="price" id="m-nifty">22,456.80</span><span class="change green">+0.45%</span></div>
+                        <div class="market-item"><span class="name">SENSEX</span><span class="price" id="m-sensex">73,852.45</span><span class="change green">+0.39%</span></div>
+                        <div class="market-item"><span class="name">BANK NIFTY</span><span class="price" id="m-bank">48,234.55</span><span class="change red">-0.32%</span></div>
+                        <div class="market-item"><span class="name">NIFTY IT</span><span class="price">35,678.20</span><span class="change green">+1.25%</span></div>
+                        <div class="market-item"><span class="name">RELIANCE</span><span class="price">2,945.50</span><span class="change green">+0.85%</span></div>
+                        <div class="market-item"><span class="name">TCS</span><span class="price">4,125.30</span><span class="change red">-0.45%</span></div>
+                        <div class="market-item"><span class="name">HDFC BANK</span><span class="price">1,685.75</span><span class="change green">+0.65%</span></div>
+                        <div class="market-item"><span class="name">INFOSYS</span><span class="price">1,542.80</span><span class="change green">+1.10%</span></div>
+                    </div>
+                </div>
+
+                <!-- Sector Performance -->
+                <div class="sector-performance">
+                    <h3>🏢 Sector Performance Today</h3>
+                    <div class="sector-chart-container">
+                        <canvas id="sectorChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Market News -->
+                <div class="market-news">
+                    <h3>📰 Latest Market News</h3>
+                    <div class="news-list">
+                        <div class="news-item"><span class="news-time">2 min ago</span><p>🚀 Nifty 50 hits all-time high, crosses 22,400 mark for the first time ever!</p></div>
+                        <div class="news-item"><span class="news-time">15 min ago</span><p>💻 IT stocks rally on strong Q4 earnings expectations from TCS and Infosys</p></div>
+                        <div class="news-item"><span class="news-time">32 min ago</span><p>🏦 RBI keeps repo rate unchanged at 6.5%, markets react positively</p></div>
+                        <div class="news-item"><span class="news-time">1 hour ago</span><p>📈 FIIs turn net buyers after 3 consecutive weeks of selling</p></div>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h3>🎓 Market Analysis Seekhna Hai?</h3>
+                    <p>Technical analysis, chart patterns aur advanced trading strategies Pro me available hain!</p>
+                    <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary"><i class="fas fa-crown"></i> Go Pro ₹199/mo</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== PREMIUM PAGE ========== -->
+        <main class="page" id="page-premium">
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge">💎 Premium Plans</span>
+                    <h2>Apna Plan Choose Karo</h2>
+                    <p>Affordable pricing, maximum value - aaj hi upgrade karo!</p>
+                </div>
+                <div class="pricing-grid">
+                    <!-- Basic Plan -->
+                    <div class="pricing-card">
+                        <span class="plan-badge">🚀 BASIC</span>
+                        <div class="price">₹49<span>/month</span></div>
+                        <div class="price-old">₹149 <span class="discount">67% OFF</span></div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Daily finance tips in Hinglish</li>
+                            <li><i class="fas fa-check"></i> SIP & Mutual Fund basics</li>
+                            <li><i class="fas fa-check"></i> Telegram community access</li>
+                            <li><i class="fas fa-check"></i> Weekly newsletters</li>
+                            <li><i class="fas fa-check"></i> Basic investment guides</li>
+                            <li><i class="fas fa-check"></i> Email support</li>
+                        </ul>
+                        <a href="https://rzp.io/rzp/VnZo0OW" target="_blank" class="btn btn-accent full">Join Basic ₹49/mo</a>
+                        <p class="plan-note">Perfect for beginners!</p>
+                    </div>
+                    <!-- Pro Plan -->
+                    <div class="pricing-card popular">
+                        <div class="popular-tag">🔥 MOST POPULAR</div>
+                        <span class="plan-badge pro">👑 PRO</span>
+                        <div class="price">₹199<span>/month</span></div>
+                        <div class="price-old">₹499 <span class="discount">60% OFF</span></div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Everything in Basic ✓</li>
+                            <li><i class="fas fa-check"></i> Advanced trading strategies</li>
+                            <li><i class="fas fa-check"></i> 50+ exclusive video guides</li>
+                            <li><i class="fas fa-check"></i> Live market analysis</li>
+                            <li><i class="fas fa-check"></i> Priority WhatsApp support</li>
+                            <li><i class="fas fa-check"></i> Weekly live Q&A sessions</li>
+                            <li><i class="fas fa-check"></i> VIP Telegram group</li>
+                            <li><i class="fas fa-check"></i> Portfolio review</li>
+                        </ul>
+                        <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary full">Go Pro ₹199/mo</a>
+                        <p class="plan-note">Best value for serious learners!</p>
+                    </div>
+                </div>
+
+                <!-- User Growth Chart -->
+                <div class="growth-stats">
+                    <h3>📈 Our Growing Community</h3>
+                    <p>Join thousands of learners who trust FINLEARN</p>
+                    <div class="growth-chart-container">
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Guarantee -->
+                <div class="guarantee-section">
+                    <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>7-Day Money Back Guarantee</h3>
+                    <p>Agar content pasand nahi aaya, 7 din me full refund! No questions asked.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== SIP CALCULATOR PAGE ========== -->
+        <main class="page" id="page-sip">
+            <section class="section dark-bg">
+                <div class="section-header light">
+                    <span class="badge green">📊 SIP Calculator</span>
+                    <h2>SIP Returns Calculate Karo</h2>
+                    <p>Dekho tumhara paisa kaise grow karega over time</p>
+                </div>
+                <div class="calc-card">
+                    <div class="calc-header">
+                        <img src="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ" alt="FINLEARN" class="calc-logo">
+                        <h3>💰 SIP Calculator</h3>
+                    </div>
+                    <div class="calc-group">
+                        <label><i class="fas fa-rupee-sign"></i> Monthly Investment</label>
+                        <div class="input-wrapper">
+                            <span class="currency">₹</span>
+                            <input type="number" id="sipAmount" value="5000" class="calc-input">
+                        </div>
+                        <input type="range" id="sipSlider1" min="500" max="100000" value="5000" step="500" class="calc-range">
+                        <div class="range-labels"><span>₹500</span><span>₹1,00,000</span></div>
+                    </div>
+                    <div class="calc-group">
+                        <label><i class="fas fa-percent"></i> Expected Return (% yearly)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="sipRate" value="12" class="calc-input">
+                            <span class="suffix">%</span>
+                        </div>
+                        <input type="range" id="sipSlider2" min="1" max="30" value="12" class="calc-range">
+                        <div class="range-labels"><span>1%</span><span>30%</span></div>
+                    </div>
+                    <div class="calc-group">
+                        <label><i class="fas fa-calendar"></i> Duration (Years)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="sipYears" value="10" class="calc-input">
+                            <span class="suffix">Years</span>
+                        </div>
+                        <input type="range" id="sipSlider3" min="1" max="40" value="10" class="calc-range">
+                        <div class="range-labels"><span>1 Year</span><span>40 Years</span></div>
+                    </div>
+                    
+                    <!-- SIP Result Chart -->
+                    <div class="sip-chart-container">
+                        <canvas id="sipResultChart"></canvas>
+                    </div>
+                    
+                    <div class="calc-result">
+                        <div class="result-label">Total Wealth After <span id="resYears">10</span> Years</div>
+                        <div class="result-value" id="totalWealth">₹11,61,695</div>
+                        <div class="result-details">
+                            <div class="result-box invested">
+                                <small>💵 Invested</small>
+                                <strong id="invested">₹6,00,000</strong>
+                            </div>
+                            <div class="result-box returns">
+                                <small>📈 Returns</small>
+                                <strong id="returns">₹5,61,695</strong>
+                            </div>
+                        </div>
+                        <div class="wealth-multiplier">
+                            Your money grows <span id="multiplier">1.94x</span> times! 🚀
+                        </div>
+                    </div>
+                    <div class="disclaimer">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        <span><strong>Disclaimer:</strong> Market investments are subject to market risks. Ye calculator sirf educational purpose ke liye hai. Actual returns vary ho sakte hain.</span>
+                    </div>
+                    <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary full">
+                        <i class="fas fa-crown"></i> Pro me Advanced Investment Strategies Seekho
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== LEARN PAGE ========== -->
+        <main class="page" id="page-learn">
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge">📚 Learn Finance</span>
+                    <h2>Finance Basics Samjho</h2>
+                    <p>Simple Hinglish me har concept clear karo - no jargon, no confusion!</p>
+                </div>
+                <div class="edu-grid">
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <div class="edu-icon">📈</div>
+                            <h3>Mutual Fund Kya Hai?</h3>
+                            <span class="edu-tag beginner">Beginner</span>
+                        </div>
+                        <div class="edu-body">
+                            <p><strong>Simple me samjho:</strong> Bahut saare logo ka paisa ek jagah pool karke invest karna. Expert fund manager tumhare behalf pe stocks aur bonds me invest karta hai.</p>
+                            <p><strong>Kaise start karo:</strong> Sirf ₹500 se bhi shuru kar sakte ho! Groww, Zerodha, Paytm Money pe account banao.</p>
+                            <div class="edu-points">
+                                <span><i class="fas fa-check"></i> Low minimum investment</span>
+                                <span><i class="fas fa-check"></i> Professional management</span>
+                                <span><i class="fas fa-check"></i> Diversification</span>
+                            </div>
+                            <a href="https://rzp.io/rzp/VnZo0OW" target="_blank" class="btn btn-accent full">Detail me Seekho ₹49</a>
+                        </div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <div class="edu-icon">💰</div>
+                            <h3>SIP Kaise Kaam Karta Hai?</h3>
+                            <span class="edu-tag beginner">Beginner</span>
+                        </div>
+                        <div class="edu-body">
+                            <p><strong>SIP matlab:</strong> Systematic Investment Plan - Har month fix amount automatically invest hota hai. Gym membership jaisa - set it and forget it!</p>
+                            <p><strong>Magic dekho:</strong> ₹5000/month, 12% return, 20 saal = ₹50 Lakh+! Compounding ka power!</p>
+                            <div class="edu-points">
+                                <span><i class="fas fa-check"></i> Rupee cost averaging</span>
+                                <span><i class="fas fa-check"></i> Discipline in investing</span>
+                                <span><i class="fas fa-check"></i> Power of compounding</span>
+                            </div>
+                            <a href="https://rzp.io/rzp/VnZo0OW" target="_blank" class="btn btn-accent full">SIP Strategies Seekho ₹49</a>
+                        </div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <div class="edu-icon">🎯</div>
+                            <h3>Long-Term Investing</h3>
+                            <span class="edu-tag intermediate">Intermediate</span>
+                        </div>
+                        <div class="edu-body">
+                            <p><strong>Golden Rule:</strong> Time IN the market > Timing THE market! Patience is the key to wealth building.</p>
+                            <p><strong>Benefits:</strong> Compounding ka magic + Lower tax on long term gains + Less stress!</p>
+                            <div class="edu-points">
+                                <span><i class="fas fa-check"></i> Wealth compounding</span>
+                                <span><i class="fas fa-check"></i> Lower LTCG tax</span>
+                                <span><i class="fas fa-check"></i> Ride out volatility</span>
+                            </div>
+                            <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary full">Advanced Strategies Pro ₹199</a>
+                        </div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-header">
+                            <div class="edu-icon">📊</div>
+                            <h3>Stock Market Basics</h3>
+                            <span class="edu-tag intermediate">Intermediate</span>
+                        </div>
+                        <div class="edu-body">
+                            <p><strong>Stock kya hai:</strong> Company ka chhota sa hissa. Jab tum share kharido = tum us company ke part owner ban gaye!</p>
+                            <p><strong>Start karo:</strong> Zerodha, Groww, Upstox pe FREE demat account kholo. 10 minute me done!</p>
+                            <div class="edu-points">
+                                <span><i class="fas fa-check"></i> Ownership in companies</span>
+                                <span><i class="fas fa-check"></i> Dividend income</span>
+                                <span><i class="fas fa-check"></i> Capital appreciation</span>
+                            </div>
+                            <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary full">Video Guides Access ₹199</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Path -->
+                <div class="learning-path">
+                    <h3>🎓 Your Learning Roadmap</h3>
+                    <div class="roadmap">
+                        <div class="roadmap-item completed">
+                            <div class="roadmap-icon"><i class="fas fa-check"></i></div>
+                            <div class="roadmap-content">
+                                <h4>Basics</h4>
+                                <p>Finance fundamentals</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-line"></div>
+                        <div class="roadmap-item active">
+                            <div class="roadmap-icon"><i class="fas fa-play"></i></div>
+                            <div class="roadmap-content">
+                                <h4>SIP & Mutual Funds</h4>
+                                <p>Start investing</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-line"></div>
+                        <div class="roadmap-item locked">
+                            <div class="roadmap-icon"><i class="fas fa-lock"></i></div>
+                            <div class="roadmap-content">
+                                <h4>Stock Analysis</h4>
+                                <p>Pro members only</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-line"></div>
+                        <div class="roadmap-item locked">
+                            <div class="roadmap-icon"><i class="fas fa-lock"></i></div>
+                            <div class="roadmap-content">
+                                <h4>Advanced Trading</h4>
+                                <p>Pro members only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparison Radar Chart -->
+                <div class="learning-stats">
+                    <h3>📊 Basic vs Pro - What You Get</h3>
+                    <div class="roadmap-chart">
+                        <canvas id="roadmapChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== REVIEWS PAGE ========== -->
+        <main class="page" id="page-reviews">
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge">⭐ Reviews</span>
+                    <h2>Hamare Members Kya Kehte Hain</h2>
+                    <p>Real reviews from real learners - no fake promises!</p>
+                </div>
+                
+                <!-- Rating Overview -->
+                <div class="rating-overview">
+                    <div class="rating-big">
+                        <span class="rating-number">4.9</span>
+                        <div class="rating-stars">⭐⭐⭐⭐⭐</div>
+                        <p>Based on 2,500+ reviews</p>
+                    </div>
+                    <div class="rating-chart-container">
+                        <canvas id="ratingChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="reviews-grid">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">RK</div>
+                            <div>
+                                <h4>Rahul Kumar</h4>
+                                <small>Mumbai, Maharashtra</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Beginner ke liye absolutely best platform! Maine pehle bahut English resources try kiye the, kuch samajh nahi aaya. FINLEARN ne sab Hinglish me itna simple explain kiya ki ab main confidently invest kar raha hoon!"</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Pro Member</span>
+                        <span class="review-date">2 weeks ago</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">PS</div>
+                            <div>
+                                <h4>Priya Sharma</h4>
+                                <small>Delhi NCR</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Sirf ₹49 me itna value! Daily tips se bahut kuch sikha. As a working professional, mujhe time nahi milta tha finance samajhne ka. Ab short videos aur tips se daily kuch na kuch seekh leti hoon."</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Basic Member</span>
+                        <span class="review-date">1 month ago</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">AV</div>
+                            <div>
+                                <h4>Amit Verma</h4>
+                                <small>Bangalore, Karnataka</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Pro membership totally worth it! Video guides amazing quality ki hain. SIP calculator daily use karta hoon. Live Q&A sessions me directly doubts solve ho jaate hain. Highly recommend!"</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Pro Member</span>
+                        <span class="review-date">3 weeks ago</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">SM</div>
+                            <div>
+                                <h4>Sneha Mishra</h4>
+                                <small>Pune, Maharashtra</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"College student hoon, pocket money se ₹49 easily afford kar sakti hoon. Basic plan se start kiya, ab slowly Pro bhi loongi. Telegram community me bahut helpful log hain, sab doubts turant solve!"</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Basic Member</span>
+                        <span class="review-date">1 week ago</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">VG</div>
+                            <div>
+                                <h4>Vikash Gupta</h4>
+                                <small>Lucknow, UP</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Mujhe finance bilkul nahi aata tha, share market sun ke darr lagta tha. FINLEARN se 3 mahine me itna seekh liya ki ab confidently SIP plan kar raha hoon. Real examples se bahut jaldi samajh aata hai!"</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Pro Member</span>
+                        <span class="review-date">2 months ago</span>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="avatar">NK</div>
+                            <div>
+                                <h4>Neha Kapoor</h4>
+                                <small>Jaipur, Rajasthan</small>
+                            </div>
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p>"Housewife hoon, ghar baithe finance seekhna chahti thi. FINLEARN perfect hai mere liye! Simple language, no confusing jargon. Ab apni savings khud confidently manage karti hoon. Thank you team!"</p>
+                        <span class="verified"><i class="fas fa-check-circle"></i> Verified Basic Member</span>
+                        <span class="review-date">3 weeks ago</span>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Join 12,500+ Happy Learners!</h3>
+                    <p>Aaj hi start karo apni financial learning journey - future me khud ko thank you bologe!</p>
+                    <div class="cta-btns">
+                        <a href="https://rzp.io/rzp/VnZo0OW" target="_blank" class="btn btn-accent">Basic ₹49/mo</a>
+                        <a href="https://rzp.io/rzp/GO0KeiEJ" target="_blank" class="btn btn-primary">Pro ₹199/mo</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== CONTACT PAGE ========== -->
+        <main class="page" id="page-contact">
+            <section class="section">
+                <div class="section-header">
+                    <span class="badge">📞 Contact Us</span>
+                    <h2>Humse Connect Karo</h2>
+                    <p>Koi bhi question ho? We're here to help 24/7!</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon email"><i class="fas fa-envelope"></i></div>
+                        <h4>Email Support</h4>
+                        <p>24 hours me reply guaranteed</p>
+                        <a href="mailto:finlearno@gmail.com">finlearno@gmail.com</a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon tg"><i class="fab fa-telegram"></i></div>
+                        <h4>Telegram Community</h4>
+                        <p>5000+ active members</p>
+                        <a href="https://t.me/Salonirana5252" target="_blank">Join Community <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon ig"><i class="fab fa-instagram"></i></div>
+                        <h4>Instagram</h4>
+                        <p>Daily tips & reels</p>
+                        <a href="https://www.instagram.com/finlearn.official.in" target="_blank">@finlearn.official.in</a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>📝 Message Bhejo</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Naam *</label>
+                                <input type="text" id="name" placeholder="Apna naam likho" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" id="email" placeholder="email@example.com" required class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Message *</label>
+                            <textarea id="message" placeholder="Apna sawaal ya feedback likho..." required class="form-input"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
+                    <div class="payment-note">
+                        <i class="fas fa-shield-alt"></i> 
+                        <span>Payments securely handled via <strong>Razorpay</strong> - India's most trusted payment gateway</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer with Your Logo -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <img src="https://drive.google.com/uc?export=view&id=1YAH56HI7zECsdFgjUmLnSF0kL6e6GWgQ" alt="FINLEARN" class="footer-logo-img">
+                    </div>
+                    <span>FINLEARN</span>
+                </div>
+                <p>Smart tareeke se paisa banana seekho – simple Hinglish me. Stock market, SIP, mutual funds aur bahut kuch. India's #1 Hinglish finance education platform.</p>
+                <div class="social-links">
+                    <a href="https://t.me/Salonirana5252" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/finlearn.official.in" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:finlearno@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="showModal('about')">About FINLEARN</a>
+                    <a href="#" onclick="showModal('privacy')">Privacy Policy</a>
+                    <a href="#" onclick="showModal('terms')">Terms & Conditions</a>
+                    <a href="#" onclick="showModal('disclaimer')">Disclaimer</a>
+                    <a href="#" onclick="showModal('refund')">Refund Policy</a>
+                </div>
+                <p class="copyright">© 2026 FINLEARN. All rights reserved. Made with ❤️ in India</p>
+            </div>
+        </footer>
+
+        <!-- Modal -->
+        <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+            <div class="modal" onclick="event.stopPropagation()">
+                <div class="modal-icon" id="modalIcon"><i class="fas fa-info-circle"></i></div>
+                <h3 id="modalTitle">Title</h3>
+                <p id="modalContent">Content</p>
+                <button class="btn btn-primary full" onclick="closeModal()"><i class="fas fa-check"></i> Samajh Gaya</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
